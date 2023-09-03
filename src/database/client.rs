@@ -1,26 +1,24 @@
 use once_cell::sync::Lazy;
+
 use surrealdb::{
 	engine::remote::ws::{Client, Ws},
-	opt::auth::Root,
+	opt::auth::Database,
 	Surreal,
 };
-use surrealdb::engine::remote::ws::Wss;
 
-use crate::config::cfg;
+use crate::config::{cfg};
 
 pub static DB: Lazy<Surreal<Client>> = Lazy::new(Surreal::init);
 
 pub async fn setup() -> surrealdb::Result<()> {
 	DB.connect::<Ws>(cfg.db.url.clone()).await?;
 
-	let _ = DB.signin(Root {
+	let _ = DB.signin(Database {
 		username: &cfg.db.username,
 		password: &cfg.db.password,
+		database: &cfg.db.database,
+		namespace: &cfg.db.namespace,
 	});
-
-	DB.use_ns(cfg.db.namespace.clone())
-		.use_db(cfg.db.database.clone())
-		.await?;
 
 	// for site in &cfg.other.sites {
 	// 	if DB.query("SELECT * FROM sites WHERE id = $site").bind(("site", site)).await?.take::<Option<>>(0) {
