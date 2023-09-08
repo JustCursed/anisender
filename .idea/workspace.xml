@@ -8,13 +8,34 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3a363932-80c9-4ba0-be59-65255e0f5b76" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/sites/services/anime_sites.rs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cargo.toml" beforeDir="false" afterPath="$PROJECT_DIR$/Cargo.toml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rustfmt.toml" beforeDir="false" afterPath="$PROJECT_DIR$/rustfmt.toml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/commands/listen.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/commands/listen.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/config.rs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/database/client.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/client.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/database/models.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/models.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/event_handler.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/event_handler.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/event_handler/cache_ready/anime_checker.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/event_handler/cache_ready/anime_checker.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/event_handler/cache_ready/changer_status.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/event_handler/cache_ready/changer_status.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/event_handler/cache_ready/system_load.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/event_handler/cache_ready/system_load.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib.rs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sites/services/mod.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/sites/services/mod.rs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Rust File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -30,6 +51,9 @@
   &quot;associatedIndex&quot;: 5
 }</component>
   <component name="ProjectId" id="2UqWPZIYS99FI0HXi16hTAvOQbu" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -51,11 +75,34 @@
     &quot;settings.editor.selected.configurable&quot;: &quot;language.rust.cargo.check&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/sites" />
+      <recent name="$PROJECT_DIR$/src/sites/anime" />
+    </key>
+  </component>
   <component name="RsExternalLinterProjectSettings">
     <option name="runOnTheFly" value="true" />
     <option name="tool" value="Clippy" />
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Cargo.Run anisender">
+    <configuration name="Run anisender" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
+      <option name="command" value="run --package anisender --bin anisender" />
+      <option name="workingDirectory" value="file://$PROJECT_DIR$" />
+      <option name="emulateTerminal" value="false" />
+      <option name="channel" value="DEFAULT" />
+      <option name="requiredFeatures" value="true" />
+      <option name="allFeatures" value="false" />
+      <option name="withSudo" value="false" />
+      <option name="buildTarget" value="REMOTE" />
+      <option name="backtrace" value="SHORT" />
+      <envs />
+      <option name="isRedirectInput" value="false" />
+      <option name="redirectInputPath" value="" />
+      <method v="2">
+        <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Run" type="CargoCommandRunConfiguration" factoryName="Cargo Command" nameIsGenerated="true">
       <option name="command" value="run" />
       <option name="workingDirectory" value="file://$PROJECT_DIR$" />
@@ -73,6 +120,11 @@
         <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
       </method>
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Cargo.Run anisender" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="RustProjectSettings">
     <option name="toolchainHomeDirectory" value="$USER_HOME$/.cargo/bin" />

@@ -3,6 +3,7 @@ hard_tabs = true
 tab_spaces = 4
 newline_style = "Native"
 use_small_heuristics = "Default"
+reorder_imports = true
 fn_call_width = 64
 attr_fn_like_width = 70
 struct_lit_width = 18

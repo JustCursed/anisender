@@ -1,9 +1,9 @@
+use crate::config::cfg;
+
 use chrono::Local;
 use serenity::{client::Context, model::gateway::Activity};
 use std::sync::Arc;
 use tokio::time::{sleep, Duration};
-
-use crate::config::cfg;
 
 pub async fn start(ctx: Arc<Context>) {
 	let msg = match cfg.handler_cfg.changer_status.message.as_str() {

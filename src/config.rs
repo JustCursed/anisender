@@ -1,6 +1,7 @@
 use serde::Deserialize;
 use serde_json::from_str;
 use std::fs::read_to_string;
+use std::sync::RwLock;
 
 pub const EMBED_COLOR: u32 = 0xffc857;
 
@@ -63,7 +64,13 @@ pub struct ChangerStatus {
 // }
 
 lazy_static::lazy_static! {
-	pub static ref cfg: Config = from_str(
+	pub static ref cfg: RwLock<Config> = from_str(
+		read_to_string(CONFIG_PATH).as_ref().unwrap()
+	).unwrap();
+}
+
+pub unsafe fn reload() {
+	*cfg.write().unwrap() = from_str(
 		read_to_string(CONFIG_PATH).as_ref().unwrap()
 	).unwrap();
 }

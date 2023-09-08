@@ -1,3 +1,4 @@
+use crate::config::cfg;
 use std::sync::Arc;
 
 use serenity::client::Context;
@@ -7,14 +8,10 @@ use serenity::{
 		command::CommandOptionType,
 		interaction::{
 			application_command::{CommandDataOption, CommandDataOptionValue},
-			Interaction
+			Interaction,
 		},
 	},
 };
-
-use crate::config::cfg;
-use crate::database::client::DB;
-use crate::database::models::Users;
 
 pub async fn run(options: &[CommandDataOption], inter: &Interaction) -> &'static str {
 	let option = options
@@ -31,7 +28,7 @@ pub async fn run(options: &[CommandDataOption], inter: &Interaction) -> &'static
 		}
 		.to_string();
 
-		return match cfg.other.sites.contains(&site) {
+		return match cfg.read().unwrap().other.sites.contains(&site) {
 			true => {
 				// DB.create(("user")).await;
 

@@ -1,3 +1,5 @@
+use crate::config::cfg;
+
 use once_cell::sync::Lazy;
 
 use surrealdb::{
@@ -5,8 +7,7 @@ use surrealdb::{
 	opt::auth::Database,
 	Surreal,
 };
-
-use crate::config::{cfg};
+use crate::database::models::Anime;
 
 pub static DB: Lazy<Surreal<Client>> = Lazy::new(Surreal::init);
 
@@ -20,14 +21,19 @@ pub async fn setup() -> surrealdb::Result<()> {
 		namespace: &cfg.db.namespace,
 	});
 
-	// for site in &cfg.other.sites {
-	// 	if DB.query("SELECT * FROM sites WHERE id = $site").bind(("site", site)).await?.take::<Option<>>(0) {
-	// 		DB.query("CREATE $table SET id = $id, last_series: 0")
-	// 			.bind(("table", "sites"))
-	// 			.bind(("id", site))
-	// 			.await?;
-	// 	}
-	// }
+	for site in &cfg.other.sites {
+		if DB
+			.query("SELECT * FROM sites WHERE id = $site")
+			.bind(("site", site))
+			.await?
+			.take::<Option<Anime>>(0)
+		{
+			DB.query("CREATE $table SET id = $id, last_series: 0")
+				.bind(("table", "sites"))
+				.bind(("id", site))
+				.await?;
+		}
+	}
 
 	Ok(())
 }

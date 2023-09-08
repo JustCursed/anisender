@@ -2,18 +2,12 @@
 extern crate reqwest;
 extern crate sys_info;
 
-use serde::{Deserialize, Serialize};
-use serde_json::json;
-// use serde::Deserialize;
-use serenity::prelude::*;
-use surrealdb::{Response, Surreal};
-use surrealdb::engine::remote::ws::Ws;
-use surrealdb::opt::auth::Root;
-use surrealdb::sql::Thing;
+use crate::database::client::setup;
 
 use config::cfg;
-
-use crate::database::client::setup;
+use serde::{Deserialize, Serialize};
+use serenity::prelude::*;
+use surrealdb::sql::Thing;
 
 mod commands;
 mod config;
@@ -27,7 +21,6 @@ mod sites;
 struct Cg {
 	pub url: String,
 }
-
 
 // fn d() {
 // 	let mut headers = HeaderMap::new();
@@ -89,13 +82,13 @@ async fn main() -> serenity::Result<()> {
 	setup().await.expect("Failed to setup database");
 
 	Client::builder(
-		&cfg.token,
+		&cfg.read().unwrap().token,
 		GatewayIntents::DIRECT_MESSAGES | GatewayIntents::GUILDS,
 	)
 	.event_handler(event_handler::Handler {
-		streaming: cfg.handler_cfg.streaming.enable,
-		system_load: cfg.handler_cfg.system_load.enable,
-		changer_status: cfg.handler_cfg.changer_status.enable,
+		streaming: cfg.read().unwrap().handler_cfg.streaming.enable,
+		system_load: cfg.read().unwrap().handler_cfg.system_load.enable,
+		changer_status: cfg.read().unwrap().handler_cfg.changer_status.enable,
 	})
 	.await?
 	.start()

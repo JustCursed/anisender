@@ -5,8 +5,8 @@ use crate::commands;
 use crate::config::cfg;
 use crate::event_handler::interaction_create::application_command::execute_command;
 
-use std::sync::Arc;
 use cache_ready::{anime_checker, changer_status, system_load};
+use std::sync::Arc;
 
 use serenity::{
 	builder::CreateEmbed,
@@ -43,8 +43,8 @@ impl EventHandler for Handler {
 
 		if self.streaming {
 			ctx.set_activity(Activity::streaming(
-				&cfg.handler_cfg.streaming.name,
-				&cfg.handler_cfg.streaming.link,
+				&cfg.read().unwrap().handler_cfg.streaming.name,
+				&cfg.read().unwrap().handler_cfg.streaming.link,
 			))
 			.await;
 		}

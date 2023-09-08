@@ -37,7 +37,7 @@ pub enum Models {
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct Users {
-	pub dc_id: u64,
+	pub id: u64,
 	pub url: String,
 }
 

@@ -1,12 +1,14 @@
+use crate::config::{cfg, EMBED_COLOR};
+
+use std::sync::Arc;
+
+use tokio::time::{sleep, Duration};
+
 use serenity::{
 	client::Context,
 	futures::StreamExt,
 	model::id::{ChannelId, MessageId},
 };
-use std::sync::Arc;
-use tokio::time::{sleep, Duration};
-
-use crate::config::{cfg, EMBED_COLOR};
 
 pub async fn start(ctx: Arc<Context>) {
 	let msg_id = preparation(ctx.to_owned()).await;

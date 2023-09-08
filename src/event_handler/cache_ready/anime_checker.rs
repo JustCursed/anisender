@@ -1,13 +1,12 @@
+use crate::config::cfg;
+use crate::database::{client::DB, models::Anime};
+
 use serenity::client::Context;
 use std::sync::Arc;
 use tokio::time::{sleep, Duration};
 
-use crate::config::cfg;
-use crate::database::client::DB;
-use crate::database::models::Anime;
-
 pub fn start(ctx: Arc<Context>) {
-	if cfg.other.cool_down_sender < 120 {
+	if cfg.read().unwrap().other.cool_down_sender < 120 {
 		eprintln!("Too low value for cool down");
 		std::process::abort();
 	}
@@ -15,7 +14,7 @@ pub fn start(ctx: Arc<Context>) {
 	tokio::spawn(async move {
 		loop {
 			check(ctx.clone()).await.expect("TODO: panic message");
-			sleep(Duration::from_secs(cfg.other.cool_down_sender)).await;
+			sleep(Duration::from_secs(cfg.read().unwrap().other.cool_down_sender)).await;
 		}
 	});
 }
